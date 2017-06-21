@@ -1,0 +1,66 @@
+{
+  "builders": [
+    {
+      "boot_command": [
+        "<enter><wait><f6><esc><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs>",
+        "<bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs>",
+        "<bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs>",
+        "<bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs><bs>",
+        "/install/vmlinuz<wait>",
+        " auto<wait>",
+        " console-setup/ask_detect=false<wait>",
+        " console-setup/layoutcode=us<wait>",
+        " console-setup/modelcode=pc105<wait>",
+        " debconf/frontend=noninteractive<wait>",
+        " debian-installer=en_US<wait>",
+        " fb=false<wait>",
+        " initrd=/install/initrd.gz<wait>",
+        " kbd-chooser/method=us<wait>",
+        " keyboard-configuration/layout=USA<wait>",
+        " keyboard-configuration/variant=USA<wait>",
+        " locale=en_US<wait>",
+        " netcfg/get_domain=vm<wait>",
+        " netcfg/get_hostname=vagrant<wait>",
+        " grub-installer/bootdev=/dev/sda<wait>",
+        " noapic<wait>",
+        " preseed/url=http://{{ .HTTPIP }}:{{ .HTTPPort }}/preseed.cfg",
+        " -- <wait>",
+        "<enter><wait>"
+      ],
+      "communicator": "ssh",
+      "disk_size": "{{user `disk_size`}}",
+      "guest_os_type": "ubuntu-64",
+      "http_directory": ".",
+      "http_port_max": "9001",
+      "http_port_min": "8000",
+      "iso_checksum": "{{user `iso_checksum`}}",
+      "iso_checksum_type": "sha256",
+      "iso_url": "{{user `iso_url`}}",
+      "keep_registered": true,
+	"remote_cache_directory": "../packer_cache",
+      "remote_datastore": "{{user `host_datastore`}}",
+      "remote_host": "{{user `host`}}",
+      "remote_password": "{{user `host_password`}}",
+      "remote_type": "{{user `host_type`}}",
+      "remote_username": "{{user `host_user`}}",
+      "shutdown_command": "shutdown",
+      "ssh_password": "user",
+      "ssh_port": 22,
+      "ssh_username": "user",
+      "ssh_wait_timeout": "10000s",
+      "type": "vmware-iso",
+      "vm_name": "{{user `name`}}",
+      "vmx_data": {
+        "RemoteDisplay.vnc.webSocket.port": "5900",
+        "cpuid.coresPerSocket": "{{user `cores`}}",
+        "ethernet0.networkName": "{{user `netname`}}",
+        "ethernet0.present": "true",
+        "ethernet0.startConnected": "true",
+        "ethernet0.virtualDev": "e1000",
+        "memsize": "{{user `memsize`}}",
+        "numvcpus": "{{user `numvcpus`}}"
+      }
+    }
+  ]
+}
+

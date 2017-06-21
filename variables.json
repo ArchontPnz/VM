@@ -1,0 +1,21 @@
+{
+"wait_90": 
+"<wait10><wait10><wait10><wait10><wait10><wait10><wait10><wait10><wait10>",
+"type": "vmware-iso",
+"name": "ubuntu",
+"host_type": "esx5",
+"host": "***",
+"host_datastore": "***/ubuntu",
+"host_user": "root",
+"host_password": "user",
+"guest_root_password": "user",
+"disk_size": "7000",
+"iso_url": "http://mirror.yandex.ru/ubuntu-releases/16.04.2/ubuntu-16.04.2-server-amd64.iso",
+"iso_checksum": "737ae7041212c628de5751d15c3016058b0e833fdc32e7420209b76ca3d0a535",
+"cores": "1",
+"memsize": "512",
+"numvcpus": "1",
+"netname": "***",
+"guest_hostname": "ubuntu"
+}
+
